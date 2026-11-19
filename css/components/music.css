@@ -1,0 +1,32 @@
+/* =========================================================
+   MUSIC — floating "our song" button
+   ========================================================= */
+
+.music {
+  position: fixed; right: 16px; bottom: 16px; z-index: 60;
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 16px 6px 6px; max-width: calc(100vw - 140px);
+  background: #fff; border: 2px solid var(--pink-200); border-radius: 999px;
+  color: var(--ink); text-align: left; box-shadow: var(--shadow);
+  transition: transform .2s, box-shadow .2s;
+}
+.music:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+.music__disc {
+  flex: none; width: 38px; height: 38px; border-radius: 50%;
+  display: grid; place-items: center; color: #fff; font-size: 1.1rem;
+  background:
+    radial-gradient(circle, var(--pink-50) 0 4px, transparent 5px),
+    repeating-radial-gradient(circle, var(--rose-700) 0 2px, #6b0d2a 2px 4px);
+}
+.music.is-playing .music__disc { animation: spin 3s linear infinite; }
+
+.music__text { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+.music__text b { font-size: .88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.music__text small { font-size: .75rem; color: var(--ink-soft); white-space: nowrap; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 480px) {
+  .music__text small { display: none; }
+}

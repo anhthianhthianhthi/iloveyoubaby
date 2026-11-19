@@ -1,0 +1,28 @@
+/* =========================================================
+   INTRO — "Are you the love of my life?" opening screen
+   ========================================================= */
+
+.intro {
+  position: fixed; inset: 0; z-index: 300; padding: 20px;
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 30% 20%, var(--pink-100), var(--bg) 65%);
+  transition: opacity .6s, visibility .6s;
+}
+.intro.is-leaving { opacity: 0; visibility: hidden; }
+
+.intro__card {
+  width: 100%; max-width: 460px; padding: 40px 28px; text-align: center;
+  background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg);
+  animation: rise .8s ease both;
+}
+.intro__emoji { display: inline-block; font-size: 3.4rem; animation: wobble 2.2s ease-in-out infinite; }
+.intro__kicker { font-family: var(--hand); font-size: 1.5rem; color: var(--pink-500); }
+.intro h2 { font-family: var(--serif); font-size: clamp(1.8rem, 6vw, 2.4rem); line-height: 1.15; margin: 6px 0 8px; }
+.intro__sub { min-height: 1.6em; color: var(--ink-soft); }
+
+.intro__actions {
+  display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap;
+  min-height: 64px; margin-top: 24px;
+}
+.intro__yes { transition: transform .25s, box-shadow .2s; }
+.intro__no.is-running { position: fixed; z-index: 301; transition: left .25s ease, top .25s ease; }

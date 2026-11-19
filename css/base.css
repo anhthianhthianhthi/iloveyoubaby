@@ -1,0 +1,95 @@
+/* =========================================================
+   BASE — design tokens, reset, typography, buttons, utilities
+   ========================================================= */
+
+:root {
+  /* colors */
+  --bg: #fff5f8;
+  --bg-tint: #ffe6ee;
+  --card: #ffffff;
+  --pink-50: #fff0f5;
+  --pink-100: #ffd6e4;
+  --pink-200: #ffb3cb;
+  --pink-300: #ff8fab;
+  --pink-400: #fb6f92;
+  --pink-500: #e63e72;
+  --rose-700: #a4133c;
+  --ink: #4a0f24;
+  --ink-soft: #85485e;
+
+  /* effects */
+  --shadow: 0 10px 30px -12px rgba(164, 19, 60, 0.28);
+  --shadow-lg: 0 24px 60px -20px rgba(164, 19, 60, 0.4);
+  --radius: 22px;
+
+  /* fonts */
+  --serif: "Playfair Display", Georgia, serif;
+  --hand: "Caveat", cursive;
+  --sans: "DM Sans", system-ui, sans-serif;
+}
+
+/* ---------- reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; }
+
+/* ---------- typography helpers ---------- */
+.eyebrow { font-family: var(--hand); font-size: 1.45rem; color: var(--pink-500); }
+.lede { color: var(--ink-soft); font-size: 1.08rem; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border: none; border-radius: 999px; padding: 12px 24px;
+  font-weight: 700; font-size: 1rem; text-decoration: none;
+  transition: transform .15s, box-shadow .2s, background .2s;
+}
+.btn:active { transform: scale(.97); }
+.btn--primary {
+  background: linear-gradient(135deg, var(--pink-400), var(--pink-500));
+  color: #fff; box-shadow: 0 8px 20px -8px rgba(230, 62, 114, .7);
+}
+.btn--primary:hover { box-shadow: 0 12px 26px -8px rgba(230, 62, 114, .85); transform: translateY(-2px); }
+.btn--ghost { background: #fff; color: var(--rose-700); border: 2px solid var(--pink-200); }
+.btn--ghost:hover { background: var(--pink-50); }
+
+/* ---------- utilities ---------- */
+/* Make the `hidden` attribute always win over component display rules (flex/grid). */
+[hidden] { display: none !important; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+.burst-heart {
+  position: fixed; pointer-events: none; z-index: 200; font-size: 1.4rem;
+  animation: burst 1.4s ease-out forwards;
+}
+
+/* ---------- animations ---------- */
+@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes shimmer { to { background-position: 200% center; } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes pop { 0% { transform: scale(.92); opacity: .4; } 60% { transform: scale(1.03); } 100% { transform: scale(1); opacity: 1; } }
+@keyframes wobble { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
+@keyframes shake { 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
+@keyframes burst {
+  0% { opacity: 1; transform: translate(0, 0) scale(.6); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.3) rotate(var(--rot)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+}

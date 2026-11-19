@@ -1,0 +1,32 @@
+/* =========================================================
+   COUPONS — scratch-off love coupons
+   ========================================================= */
+
+.coupons {
+  max-width: 1050px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px;
+}
+
+.coupon {
+  position: relative; min-height: 190px; overflow: hidden;
+  background: #fff; border: 2px dashed var(--pink-200); border-radius: 18px; box-shadow: var(--shadow);
+}
+.coupon.is-revealed { border-style: solid; border-color: var(--pink-300); }
+
+.coupon__content {
+  min-height: 190px; height: 100%; padding: 22px 18px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center;
+}
+.coupon__emoji { font-size: 2.2rem; line-height: 1.2; }
+.coupon h3 { font-family: var(--serif); font-size: 1.25rem; line-height: 1.25; }
+.coupon p { color: var(--ink-soft); font-size: .95rem; }
+
+.coupon__scratch {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  cursor: grab; touch-action: none; transition: opacity .6s;
+}
+.coupon__scratch:active { cursor: grabbing; }
+.coupon__scratch.is-revealed { opacity: 0; pointer-events: none; }
+.coupon__scratch:focus-visible { outline: 3px solid var(--rose-700); outline-offset: -3px; }
+
+.coupons__note { text-align: center; margin-top: 28px; font-family: var(--hand); font-size: 1.4rem; color: var(--pink-500); }

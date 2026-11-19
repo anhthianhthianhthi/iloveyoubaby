@@ -1,0 +1,87 @@
+/* =========================================================
+   LAYOUT — background, nav, hero, sections, footer
+   ========================================================= */
+
+#hearts-bg {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+}
+.nav, .hero, main, .footer { position: relative; z-index: 1; }
+
+/* ---------- nav ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 12px 24px;
+  background: rgba(255, 245, 248, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--pink-100);
+}
+.nav__logo {
+  font-family: var(--serif); font-style: italic; font-weight: 700;
+  font-size: 1.25rem; color: var(--rose-700); text-decoration: none; white-space: nowrap;
+}
+.nav__links { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.nav__links::-webkit-scrollbar { display: none; }
+.nav__links a {
+  color: var(--ink-soft); text-decoration: none; font-size: .92rem; font-weight: 500;
+  padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: .2s;
+}
+.nav__links a:hover,
+.nav__links a.is-active { background: var(--pink-100); color: var(--rose-700); }
+
+/* ---------- hero ---------- */
+.hero {
+  min-height: calc(100vh - 60px); min-height: calc(100svh - 60px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 60px 20px 80px; gap: 18px;
+}
+.hero__greeting {
+  display: inline-block; padding: 6px 16px; border-radius: 999px;
+  background: #fff; border: 1px solid var(--pink-100); box-shadow: var(--shadow);
+  font-weight: 500; font-size: .95rem; color: var(--rose-700);
+  animation: rise .9s ease both;
+}
+.hero__kicker { font-family: var(--hand); font-size: 1.6rem; color: var(--pink-500); animation: rise .9s ease both; }
+.hero__title {
+  font-family: var(--serif); font-weight: 600;
+  font-size: clamp(3.4rem, 13vw, 8rem); line-height: 1; color: var(--ink);
+  animation: rise .9s .15s ease both;
+}
+.hero__title em {
+  font-style: italic;
+  background: linear-gradient(120deg, var(--pink-400), var(--rose-700), var(--pink-300));
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+.hero__sub {
+  font-size: clamp(1.05rem, 3vw, 1.3rem); color: var(--ink-soft);
+  min-height: 2em; max-width: 34rem; animation: rise .9s .3s ease both;
+}
+.hero__caret { color: var(--pink-400); animation: blink 1s steps(1) infinite; margin-left: 2px; }
+.hero .btn { margin-top: 10px; animation: rise .9s .45s ease both; }
+
+/* ---------- sections ---------- */
+.section { padding: 100px 20px; }
+.section--tint {
+  background: linear-gradient(180deg, transparent, var(--bg-tint) 12%, var(--bg-tint) 88%, transparent);
+}
+.section__head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+.section__head h2 {
+  font-family: var(--serif); font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.1; margin: 4px 0 12px;
+}
+
+/* ---------- footer ---------- */
+.footer { text-align: center; padding: 50px 20px 60px; color: var(--ink-soft); }
+.footer__love { font-family: var(--hand); font-size: 1.6rem; color: var(--rose-700); }
+.footer__small { font-size: .85rem; margin-top: 4px; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 760px) {
+  .nav { padding: 10px 16px; }
+  .nav__logo { display: none; }
+  .nav__links { width: 100%; }
+  .section { padding: 72px 16px; }
+}

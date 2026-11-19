@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My precious</title>
+  <meta name="description" content="A little corner of the internet that belongs only to you." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💗</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Chakra+Petch:wght@500;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@0,600;1,500;1,700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components/timeline.css" />
+  <link rel="stylesheet" href="css/components/gallery.css" />
+  <link rel="stylesheet" href="css/components/letters.css" />
+  <link rel="stylesheet" href="css/components/reasons.css" />
+  <link rel="stylesheet" href="css/components/secret.css" />
+  <link rel="stylesheet" href="css/components/modal.css" />
+  <link rel="stylesheet" href="css/components/intro.css" />
+  <link rel="stylesheet" href="css/components/coupons.css" />
+  <link rel="stylesheet" href="css/components/game.css" />
+  <link rel="stylesheet" href="css/components/pumpkins.css" />
+  <link rel="stylesheet" href="css/components/pro.css" />
+  <link rel="stylesheet" href="css/components/wheel.css" />
+  <link rel="stylesheet" href="css/components/music.css" />
+  <link rel="stylesheet" href="css/components/lyrics.css" />
+
+  <!-- Scripts (ES modules, deferred by default) -->
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <canvas id="hearts-bg" aria-hidden="true"></canvas>
+
+  <!-- Opening question -->
+  <div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-question">
+    <div class="intro__card">
+      <div class="intro__emoji" aria-hidden="true">🧸</div>
+      <p class="intro__kicker">hey you 👀</p>
+      <h2 id="intro-question">Are you the love of my life?</h2>
+      <p class="intro__sub" id="intro-sub">answer carefully, bro.</p>
+      <div class="intro__actions">
+        <button class="btn btn--primary intro__yes" id="intro-yes" type="button">Yes, obviously 💗</button>
+        <button class="btn btn--ghost intro__no" id="intro-no" type="button">No</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Main">
+    <a href="#home" class="nav__logo">My precious <span aria-hidden="true">♡</span></a>
+    <div class="nav__links">
+      <a href="#story">Our story</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#pro">Pro player</a>
+      <a href="#letters">Open when</a>
+      <a href="#reasons">Reasons</a>
+      <a href="#coupons">Coupons</a>
+      <a href="#wheel">Date wheel</a>
+      <a href="#game">Game</a>
+      <a href="#secret">Secret</a>
+    </div>
+  </nav>
+
+  <header id="home" class="hero">
+    <p class="hero__greeting" id="greeting" hidden></p>
+    <p class="hero__kicker">for the love of my life</p>
+    <h1 class="hero__title">My <em>precious</em></h1>
+    <p class="hero__sub"><span id="typed"></span><span class="hero__caret" aria-hidden="true">|</span></p>
+    <a href="#story" class="btn btn--primary">Read our story ↓</a>
+  </header>
+
+  <main>
+    <section id="story" class="section">
+      <div class="section__head">
+        <p class="eyebrow">chapter by chapter</p>
+        <h2>Our story</h2>
+        <p class="lede">From one very bold Snapchat add to… us.</p>
+      </div>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+
+    <section id="gallery" class="section section--tint">
+      <div class="section__head">
+        <p class="eyebrow">proof that we're cute</p>
+        <h2>Photo gallery</h2>
+        <p class="lede">Every picture of us is my favorite picture.</p>
+      </div>
+      <div class="gallery" id="gallery-grid"></div>
+    </section>
+
+    <section id="pro" class="section pro">
+      <div class="section__head">
+        <p class="eyebrow">gg ez</p>
+        <h2>My favorite pro player</h2>
+        <p class="lede">Counter-Strike professional. Certified genius. Mine.</p>
+      </div>
+      <div class="pro__grid">
+        <article class="pro-card reveal" id="pro-card"></article>
+        <div class="pro__side">
+          <div class="killfeed reveal" aria-label="Kill feed">
+            <p class="killfeed__title">live kill feed</p>
+            <ul id="killfeed" aria-live="off"></ul>
+          </div>
+          <div class="pro__note reveal" id="pro-note"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="letters" class="section">
+      <div class="section__head">
+        <p class="eyebrow">for whenever you need me</p>
+        <h2>Open when…</h2>
+        <p class="lede">Only open the one that fits the moment. (I know you'll open all of them. It's fine.)</p>
+      </div>
+      <div class="letters" id="letters-grid"></div>
+    </section>
+
+    <section id="reasons" class="section section--tint">
+      <div class="section__head">
+        <p class="eyebrow">the list never ends</p>
+        <h2>Reasons why I love you</h2>
+        <p class="lede">Pull one from the jar. Then another. Then another.</p>
+      </div>
+      <div class="jar">
+        <div class="jar__card" id="reason-card" aria-live="polite">
+          <span class="jar__num" id="reason-num">♡</span>
+          <p class="jar__text" id="reason-text">Tap the button and I'll tell you why.</p>
+        </div>
+        <div class="jar__actions">
+          <button class="btn btn--primary" id="reason-btn" type="button">Pull a reason 💌</button>
+          <button class="btn btn--ghost" id="reason-all-btn" type="button" aria-expanded="false" hidden>Show me all of them</button>
+        </div>
+        <p class="jar__progress" id="jar-progress"></p>
+      </div>
+      <ol class="reasons-list" id="reasons-list" hidden></ol>
+    </section>
+
+    <section id="coupons" class="section">
+      <div class="section__head">
+        <p class="eyebrow">redeemable anytime, no terms & conditions</p>
+        <h2>Love coupons</h2>
+        <p class="lede">Scratch to reveal. Screenshot to redeem. No expiry date, just like us.</p>
+      </div>
+      <div class="coupons" id="coupons-grid"></div>
+      <p class="coupons__note">send me a screenshot and it's yours, my love ♡</p>
+    </section>
+
+    <section id="wheel" class="section section--tint">
+      <div class="section__head">
+        <p class="eyebrow">can't decide? let fate do it</p>
+        <h2>Spin the date wheel</h2>
+        <p class="lede">Spin it, screenshot it, send it to me. Whatever it lands on, we're doing it. No take-backs.</p>
+      </div>
+      <div class="wheel">
+        <div class="wheel__stage">
+          <span class="wheel__pointer" aria-hidden="true"></span>
+          <canvas id="wheel-canvas" aria-label="Date idea wheel"></canvas>
+        </div>
+        <button class="btn btn--primary wheel__spin" id="wheel-spin" type="button">Spin the wheel 🎡</button>
+        <div class="wheel__result" id="wheel-result" aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <section id="game" class="section">
+      <div class="section__head">
+        <p class="eyebrow">you always feed me, so…</p>
+        <h2>Feed me sushi</h2>
+        <p class="lede">Catch the food, dodge the ragebait. 30 seconds. Go.</p>
+      </div>
+      <div class="game">
+        <div class="game__hud">
+          <span>🍣 <b id="game-score">0</b></span>
+          <span>⏱ <b id="game-time">30</b>s</span>
+          <span id="game-lives" aria-label="lives left">💗💗💗</span>
+        </div>
+        <div class="game__stage" id="game-stage">
+          <canvas id="game-canvas" aria-label="Sushi catching game"></canvas>
+          <div class="game__overlay" id="game-overlay">
+            <h3 id="game-title">Feed me sushi 🍣</h3>
+            <p id="game-text">Move me 😋 left and right and catch the food.</p>
+            <p class="game__legend">🍣🍙🍤🍱 +1 · 💗 +3 · 😤 ragebait = lose a heart</p>
+            <button class="btn btn--primary" id="game-start" type="button">Start 🍣</button>
+            <p class="game__best" id="game-best"></p>
+          </div>
+        </div>
+        <p class="game__help">Mouse or finger to move, or the ← → keys.</p>
+      </div>
+    </section>
+
+    <section id="secret" class="section section--tint">
+      <div class="section__head">
+        <p class="eyebrow">for your eyes only</p>
+        <h2>Secret message</h2>
+      </div>
+      <div class="lock" id="lock">
+        <div class="lock__icon" aria-hidden="true">🔒</div>
+        <p>This one's locked. Only you know the password.</p>
+        <form id="lock-form" class="lock__form" autocomplete="off">
+          <label for="lock-input" class="sr-only">Password</label>
+          <input id="lock-input" type="password" placeholder="password…" />
+          <button class="btn btn--primary" type="submit">Unlock</button>
+        </form>
+        <p class="lock__hint" id="lock-hint"></p>
+        <p class="lock__error" id="lock-error" role="alert"></p>
+      </div>
+      <article class="secret-letter" id="secret-letter" hidden></article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__love">made with way too much love, for the love of my life <span aria-hidden="true">💗</span></p>
+    <p class="footer__small">no ragebait allowed on this website.</p>
+  </footer>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__body" id="modal-body"></div>
+    <button class="modal__close" type="button" data-close aria-label="Close">×</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+/* =========================================================
+   LYRICS — small floating card above the music button
+   ========================================================= */
+
+.lyrics {
+  position: fixed; right: 16px; bottom: 76px; z-index: 61;
+  width: min(340px, calc(100vw - 32px)); padding: 16px 40px 14px 18px;
+  background: rgba(255, 255, 255, .92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 2px solid var(--pink-200); border-radius: 20px; box-shadow: var(--shadow-lg);
+  transition: opacity .4s, transform .4s;
+}
+.lyrics.is-waiting .lyrics__line { color: var(--pink-300); font-style: normal; letter-spacing: .2em; }
+
+.lyrics::before {
+  content: "♪ the song that reminds me of you"; display: block; margin-bottom: 4px;
+  font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pink-500);
+}
+
+.lyrics__line {
+  font-family: var(--serif); font-style: italic; font-size: 1.15rem; line-height: 1.35; color: var(--ink);
+}
+.lyrics__line.is-entering { animation: rise .45s ease both; }
+.lyrics__next { margin-top: 6px; font-size: .85rem; color: var(--ink-soft); opacity: .7; }
+.lyrics__next:empty { display: none; }
+
+.lyrics__close {
+  position: absolute; top: 8px; right: 10px; width: 26px; height: 26px;
+  border: none; border-radius: 50%; background: var(--pink-50); color: var(--rose-700); font-size: 1.1rem; line-height: 1;
+}
+.lyrics__close:hover { background: var(--pink-100); }
+

@@ -1,0 +1,31 @@
+/* =========================================================
+   REASONS — the love jar + full list
+   ========================================================= */
+
+.jar { max-width: 560px; margin: 0 auto; text-align: center; }
+
+.jar__card {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  min-height: 220px; padding: 44px 32px;
+  background: var(--card); border: 2px solid var(--pink-100); border-radius: var(--radius); box-shadow: var(--shadow-lg);
+}
+.jar__card.is-popping { animation: pop .45s ease; }
+.jar__num { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--pink-400); }
+.jar__text { font-family: var(--serif); font-size: clamp(1.25rem, 3.4vw, 1.6rem); line-height: 1.4; }
+
+.jar__actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
+.jar__progress { margin-top: 14px; color: var(--ink-soft); font-size: .92rem; }
+
+.reasons-list {
+  max-width: 1050px; margin: 48px auto 0; list-style: none; counter-reset: reason;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px;
+}
+.reasons-list li {
+  counter-increment: reason; position: relative;
+  padding: 16px 18px 16px 58px; background: #fff; border-radius: 16px; box-shadow: var(--shadow);
+}
+.reasons-list li::before {
+  content: counter(reason); position: absolute; left: 14px; top: 14px;
+  width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--pink-100); color: var(--rose-700); font-weight: 700; font-size: .85rem;
+}

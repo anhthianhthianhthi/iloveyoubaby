@@ -1,0 +1,22 @@
+/* =========================================================
+   PUMPKIN HUNT — hidden pumpkins + progress badge
+   ========================================================= */
+
+.pumpkin {
+  position: absolute; z-index: 5; padding: 6px;
+  border: none; background: none; font-size: 1.5rem; line-height: 1; cursor: pointer;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .15));
+  animation: wobble 3s ease-in-out infinite;
+}
+.pumpkin:hover { animation-duration: .6s; }
+.pumpkin.is-found { animation: pumpkin-found .6s ease forwards; pointer-events: none; }
+
+.pumpkin-badge {
+  position: fixed; left: 16px; bottom: 16px; z-index: 60;
+  padding: 8px 14px; border: 2px solid var(--pink-200); border-radius: 999px;
+  background: #fff; color: var(--rose-700); font-weight: 700; box-shadow: var(--shadow);
+}
+.pumpkin-badge.is-bumped { animation: pop .45s ease; }
+.pumpkin-badge.is-complete { background: linear-gradient(135deg, var(--pink-400), var(--pink-500)); color: #fff; border-color: transparent; }
+
+@keyframes pumpkin-found { to { transform: scale(2.2) translateY(-16px); opacity: 0; } }

@@ -1,0 +1,58 @@
+/* =========================================================
+   MODAL — shared by letters + photo lightbox
+   ========================================================= */
+
+.modal {
+  position: fixed; inset: 0; z-index: 100; padding: 20px;
+  display: grid; place-items: center;
+  visibility: hidden; opacity: 0; transition: .3s;
+}
+.modal.is-open { visibility: visible; opacity: 1; }
+
+.modal__backdrop { position: absolute; inset: 0; background: rgba(74, 15, 36, .6); backdrop-filter: blur(4px); }
+.modal__body {
+  position: relative; z-index: 1; width: 100%;
+  display: flex; justify-content: center;
+  transform: scale(.94) translateY(10px); transition: .35s;
+}
+.modal.is-open .modal__body { transform: none; }
+
+.modal__close {
+  position: absolute; top: 16px; right: 18px; z-index: 2;
+  width: 44px; height: 44px; border: none; border-radius: 50%;
+  background: #fff; color: var(--rose-700); font-size: 1.8rem; line-height: 1; box-shadow: var(--shadow);
+}
+
+/* ---------- note card (small message popups) ---------- */
+.note-card {
+  max-width: 440px; width: 100%; padding: 36px 30px; text-align: center;
+  background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg);
+}
+.note-card__emoji { font-size: 3rem; line-height: 1; margin-bottom: 10px; }
+.note-card h3 { font-family: var(--serif); font-size: 1.7rem; line-height: 1.2; color: var(--rose-700); margin-bottom: 12px; }
+.note-card p { color: var(--ink-soft); }
+.note-card p + p { margin-top: 10px; }
+.note-card__small { font-family: var(--hand); font-size: 1.35rem; color: var(--pink-500) !important; }
+.note-card .btn { margin-top: 20px; }
+
+/* ---------- lightbox ---------- */
+.lightbox { max-width: 900px; text-align: center; }
+.lightbox img {
+  max-height: 76vh; width: auto; margin: 0 auto;
+  border: 8px solid #fff; border-radius: 10px; box-shadow: var(--shadow-lg);
+}
+.lightbox__caption { margin-top: 12px; font-family: var(--hand); font-size: 1.7rem; color: #fff; }
+.lightbox__count { font-size: .85rem; color: rgba(255, 255, 255, .7); }
+
+.lightbox__nav {
+  position: fixed; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 48px; height: 48px; border: none; border-radius: 50%;
+  background: rgba(255, 255, 255, .9); color: var(--rose-700); font-size: 1.6rem; box-shadow: var(--shadow);
+}
+.lightbox__nav--prev { left: 16px; }
+.lightbox__nav--next { right: 16px; }
+.lightbox__nav:hover { background: #fff; }
+
+@media (max-width: 760px) {
+  .lightbox__nav { top: auto; bottom: 20px; transform: none; }
+}
