@@ -1,0 +1,34 @@
+/* =========================================================
+   HEARTFELT — "If you ever wonder how much you mean to me…"
+   Calm on purpose: no buttons, no animations except a soft fade-in.
+   ========================================================= */
+
+.heartfelt { padding-top: 120px; padding-bottom: 120px; }
+
+.heartfelt__inner {
+  max-width: 640px; margin: 0 auto; padding: 56px 48px;
+  background: #fffdfd; border: 1px solid var(--pink-100); border-radius: var(--radius);
+  box-shadow: var(--shadow-lg); text-align: center;
+}
+
+.heartfelt__title {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(1.9rem, 5.5vw, 2.7rem); line-height: 1.2; color: var(--rose-700);
+  margin-top: 6px;
+}
+
+.heartfelt__divider { margin: 22px 0 26px; color: var(--pink-300); font-size: 1.3rem; letter-spacing: .6em; }
+
+.heartfelt__inner > p:not(.eyebrow):not(.heartfelt__sign) {
+  font-family: var(--serif); font-size: 1.12rem; line-height: 1.85; color: var(--ink);
+  text-align: left; margin-bottom: 18px;
+}
+
+.heartfelt__sign {
+  margin-top: 30px; font-family: var(--hand); font-size: 1.8rem; line-height: 1.3; color: var(--pink-500);
+}
+
+@media (max-width: 760px) {
+  .heartfelt__inner { padding: 40px 24px; }
+  .heartfelt__inner > p:not(.eyebrow):not(.heartfelt__sign) { font-size: 1.05rem; line-height: 1.75; }
+}

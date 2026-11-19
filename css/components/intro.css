@@ -18,7 +18,11 @@
 .intro__emoji { display: inline-block; font-size: 3.4rem; animation: wobble 2.2s ease-in-out infinite; }
 .intro__kicker { font-family: var(--hand); font-size: 1.5rem; color: var(--pink-500); }
 .intro h2 { font-family: var(--serif); font-size: clamp(1.8rem, 6vw, 2.4rem); line-height: 1.15; margin: 6px 0 8px; }
-.intro__sub { min-height: 1.6em; color: var(--ink-soft); }
+.intro__note {
+  max-width: 340px; margin: 4px auto 14px;
+  font-family: var(--serif); font-style: italic; font-size: 1.02rem; line-height: 1.5; color: var(--ink-soft);
+}
+.intro__sub { min-height: 1.6em; color: var(--pink-500); font-size: .92rem; }
 
 .intro__actions {
   display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap;
